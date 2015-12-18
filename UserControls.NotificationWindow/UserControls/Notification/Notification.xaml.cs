@@ -2,23 +2,19 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace UserControls.NotificationWindow
+namespace UserControls.NotificationPanel
 {
     /// <summary>
-    /// Interaktionslogik für PopupNotification.xaml
+    /// A Notification item that will be displayed in a notification container.
     /// </summary>
-    public partial class NotificationItem : UserControl
-    {
-        private NotificationContainer _container;
-
-        public NotificationItem(string header, string message, NotificationContainer container)
+    internal partial class Notification : UserControl
+    { 
+        public Notification(string header, string message)
         {
             InitializeComponent();
 
             Header = header;
             Message = message;
-
-            _container = container;
         }
 
         private void DoubleAnimation_Completed(object sender, EventArgs e)
@@ -26,6 +22,9 @@ namespace UserControls.NotificationWindow
             RaiseCompleted(new DisposeNotificationEventArgs(this));
         }
 
+        /// <summary>
+        /// Event that will be raised when the notification item is dismissed or runs out.
+        /// </summary>
         internal event EventHandler Completed;
         internal virtual void RaiseCompleted(DisposeNotificationEventArgs e)
         {
@@ -36,6 +35,9 @@ namespace UserControls.NotificationWindow
             }
         }
 
+        /// <summary>
+        /// Message header of the notification item.
+        /// </summary>
         public string Header
         {
             get { return (string)GetValue(HeaderProperty); }
@@ -43,7 +45,7 @@ namespace UserControls.NotificationWindow
         }
 
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(NotificationItem), new FrameworkPropertyMetadata(
+            DependencyProperty.Register("Header", typeof(string), typeof(Notification), new FrameworkPropertyMetadata(
                 "...",
                 FrameworkPropertyMetadataOptions.None,
                 OnHeaderChanged));
@@ -51,16 +53,20 @@ namespace UserControls.NotificationWindow
         private static void OnHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var content = e.NewValue as string;
-            var notificationWindow = d as NotificationItem;
+            var notificationWindow = d as Notification;
 
             if (notificationWindow == null)
                 return;
 
             //not working currently
+            //todo remove the header grid row if the header is empty
             notificationWindow.HeaderRow.Height = string.IsNullOrEmpty(content) ? new GridLength(0, GridUnitType.Star) : new GridLength(1, GridUnitType.Star);
 
         }
 
+        /// <summary>
+        /// Message of the notification item.
+        /// </summary>
         public string Message
         {
             get { return (string)GetValue(MessageProperty); }
@@ -69,11 +75,15 @@ namespace UserControls.NotificationWindow
 
         // Using a DependencyProperty as the backing store for Message.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MessageProperty =
-            DependencyProperty.Register("Message", typeof(string), typeof(NotificationItem), new PropertyMetadata(""));
+            DependencyProperty.Register("Message", typeof(string), typeof(Notification), new PropertyMetadata(""));
 
+        /// <summary>
+        /// Removes the notification item from its parent.
+        /// </summary>
         private void Close(object sender, EventArgs e)
         {
-            _container.RemoveNotification(this);
+            //_container.RemoveNotification(this);
+            RaiseCompleted(new DisposeNotificationEventArgs(this));
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using UserControls.NotificationWindow;
+using UserControls.NotificationPanel;
 
 namespace TestApplication
 {
@@ -8,26 +8,25 @@ namespace TestApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        private NotificationContainer _notificationContainer;
-
+        private IPanel _panel;
         private int _counter;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _notificationContainer = new NotificationContainer();
-            _notificationContainer.Show();
+            _panel = new Panel();
+            _panel.Activate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _notificationContainer.AddNotification(new NotificationItem("Erfolg", _counter++.ToString(), _notificationContainer));
+            _panel.AddNotification("Erfolg", _counter++.ToString());
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _notificationContainer.Close();
+            _panel.Deactivate();
         }        
     }
 }

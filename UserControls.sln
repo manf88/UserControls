@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{7B8E2B83-0267-4C88-ADDE-5414FCF1C38F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControls.NotificationWindow", "UserControls.NotificationWindow\UserControls.NotificationWindow.csproj", "{DFF470EC-62D6-4BDA-9BB0-E0D40A3472F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControls.NotificationPanel", "UserControls.NotificationWindow\UserControls.NotificationPanel.csproj", "{DFF470EC-62D6-4BDA-9BB0-E0D40A3472F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

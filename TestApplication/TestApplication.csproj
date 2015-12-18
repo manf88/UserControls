@@ -96,9 +96,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserControls.NotificationWindow\UserControls.NotificationWindow.csproj">
+    <ProjectReference Include="..\UserControls.NotificationWindow\UserControls.NotificationPanel.csproj">
       <Project>{dff470ec-62d6-4bda-9bb0-e0d40a3472f1}</Project>
-      <Name>UserControls.NotificationWindow</Name>
+      <Name>UserControls.NotificationPanel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

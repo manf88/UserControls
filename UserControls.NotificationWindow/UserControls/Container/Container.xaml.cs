@@ -1,28 +1,33 @@
 ﻿using System;
 using System.Windows;
 
-namespace UserControls.NotificationWindow
+namespace UserControls.NotificationPanel
 {
     /// <summary>
-    /// Interaction logic for NotificationContainer.xaml
+    /// The host window for notification items.
     /// </summary>
-    public partial class NotificationContainer : Window
+    internal partial class Container : Window
     {
-        public NotificationContainer()
+        public Container()
         {
             InitializeComponent();
         }
 
-        public void AddNotification(NotificationItem notification)
+        /// <summary>
+        /// Adds a notification to the container.
+        /// </summary>
+        /// <param name="notification"></param>
+        public void AddNotification(string header, string message)
         {
+            var notification = new Notification(header, message);
+
             NotificationList.Visibility = Visibility.Visible;
 
             NotificationList.Children.Add(notification);
             notification.Completed += OnNotificationCompleted;
-
         }
 
-        public void RemoveNotification(NotificationItem notification)
+        public void RemoveNotification(Notification notification)
         {
             NotificationList.Children.Remove(notification);
             notification.RaiseCompleted(new DisposeNotificationEventArgs(notification));
@@ -31,7 +36,7 @@ namespace UserControls.NotificationWindow
         private void OnNotificationCompleted(object sender, EventArgs e)
         {
             var args = (DisposeNotificationEventArgs)e;
-            NotificationList.Children.Remove(args.Parent);
+            NotificationList.Children.Remove(args.Notification);
 
             if (NotificationList.Children.Count == 0)
             {
