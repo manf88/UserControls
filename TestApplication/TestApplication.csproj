@@ -100,10 +100,6 @@
       <Project>{dff470ec-62d6-4bda-9bb0-e0d40a3472f1}</Project>
       <Name>UserControls.NotificationWindow</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserControls\UserControls.Miscellaneous.csproj">
-      <Project>{b5f0d977-8ba4-4b9b-827e-62dca53f9635}</Project>
-      <Name>UserControls.Miscellaneous</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

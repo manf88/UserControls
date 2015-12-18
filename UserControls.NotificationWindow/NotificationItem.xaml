@@ -3,24 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Background="Transparent"
-             x:Name="NotificationWindow">
+             x:Name="NotificationWindow"
+             MouseRightButtonDown="Close">
     <Grid RenderTransformOrigin="0,1">
         <Border     Background="#0098a1"
                     BorderBrush="Transparent"
                     CornerRadius="5">
-            <Grid Margin="20">
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"
                                    x:Name="HeaderRow"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Content="{Binding Test}"/>
+                
+                <Button VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Height="10"
+                        Width="10"
+                        Background="Transparent"
+                        Click="Close"/>
+                
                 <TextBlock TextWrapping="Wrap"
-                               Margin="5"
+                               Margin="10"
                                FontFamily="Arial"
                                FontSize="15"
                                VerticalAlignment="Center"
@@ -30,6 +37,7 @@
                                FontWeight="Bold"
                                Text="{Binding Header, ElementName=NotificationWindow}">
                 </TextBlock>
+                
                 <TextBlock TextWrapping="Wrap"
                                Margin="5"
                                FontFamily="Arial"
@@ -39,6 +47,7 @@
                                Foreground="White"
                                Grid.Row="1"
                                Text="{Binding Message, ElementName=NotificationWindow}">
+                    
                 </TextBlock>
             </Grid>
         </Border>

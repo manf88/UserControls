@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace UserControls.NotificationWindow
 {
@@ -21,12 +9,16 @@ namespace UserControls.NotificationWindow
     /// </summary>
     public partial class NotificationItem : UserControl
     {
-        public NotificationItem(string header, string message, NotificationItem followingNotification = null)
+        private NotificationContainer _container;
+
+        public NotificationItem(string header, string message, NotificationContainer container)
         {
             InitializeComponent();
 
             Header = header;
             Message = message;
+
+            _container = container;
         }
 
         private void DoubleAnimation_Completed(object sender, EventArgs e)
@@ -37,7 +29,7 @@ namespace UserControls.NotificationWindow
         internal event EventHandler Completed;
         internal virtual void RaiseCompleted(DisposeNotificationEventArgs e)
         {
-            EventHandler handler = Completed;
+            var handler = Completed;
             if (handler != null)
             {
                 handler(this, e);
@@ -78,5 +70,10 @@ namespace UserControls.NotificationWindow
         // Using a DependencyProperty as the backing store for Message.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MessageProperty =
             DependencyProperty.Register("Message", typeof(string), typeof(NotificationItem), new PropertyMetadata(""));
+
+        private void Close(object sender, EventArgs e)
+        {
+            _container.RemoveNotification(this);
+        }
     }
 }

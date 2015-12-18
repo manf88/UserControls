@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:TestApplication"
         xmlns:notify="clr-namespace:UserControls.NotificationWindow;assembly=UserControls.NotificationWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        Closing="Window_Closing">
     <Grid>
-        <notify:NotificationOpener x:Name="Opener"/>
+        <Button x:Name="Opener" Click="Button_Click"/>
     </Grid>
 </Window>

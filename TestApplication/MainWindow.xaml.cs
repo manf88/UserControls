@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using UserControls;
-using UserControls.Miscellaneous;
+﻿using System.Windows;
+using UserControls.NotificationWindow;
 
 namespace TestApplication
 {
@@ -22,16 +8,26 @@ namespace TestApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        private NotificationContainer _notificationContainer;
+
+        private int _counter;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _notificationContainer = new NotificationContainer();
+            _notificationContainer.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var notification = new PopupNotification("Erfolg", "Der Auftrag wurde gespeichert");
-
-            notification.Show();
+            _notificationContainer.AddNotification(new NotificationItem("Erfolg", _counter++.ToString(), _notificationContainer));
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _notificationContainer.Close();
+        }        
     }
 }
