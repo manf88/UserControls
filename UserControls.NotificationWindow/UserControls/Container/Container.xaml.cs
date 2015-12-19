@@ -11,7 +11,11 @@ namespace UserControls.NotificationPanel
         public Container()
         {
             InitializeComponent();
+
+            MaxNotifications = 3;
         }
+
+        public int MaxNotifications { get; set; }
 
         /// <summary>
         /// Adds a notification to the container.
@@ -22,6 +26,11 @@ namespace UserControls.NotificationPanel
             var notification = new Notification(header, message);
 
             NotificationList.Visibility = Visibility.Visible;
+
+            if(NotificationList.Children.Count == MaxNotifications)
+            {
+                RemoveNotification((Notification)NotificationList.Children[0]);
+            }
 
             NotificationList.Children.Add(notification);
             notification.Completed += OnNotificationCompleted;

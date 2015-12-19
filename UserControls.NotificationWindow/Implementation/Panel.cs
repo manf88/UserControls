@@ -6,6 +6,20 @@ namespace UserControls.NotificationPanel
     {
         private Container _container;
 
+        private int _maxNotifications;
+        public int MaxNotifications
+        {
+            get
+            {
+                return _maxNotifications;
+            }
+
+            set
+            {
+                _maxNotifications = value;
+            }
+        }
+
         public void Activate()
         {
             _container = new Container();
