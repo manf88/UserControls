@@ -19,14 +19,20 @@
                                    x:Name="HeaderRow"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <Button VerticalAlignment="Top"
                         HorizontalAlignment="Right"
                         Height="10"
                         Width="10"
                         Background="Transparent"
-                        Click="Close"/>
-                
+                        Click="Close">
+                    <Path Fill="White" >
+                            <Path.Data>
+                                <PathGeometry Figures="m 30 25.362188 0 30.000001 -30 0 0 20 30 0 0 29.999991 20 0 0 -29.999991 30 0 0 -20 -30 0 0 -30.000001 -20 0 z" FillRule="nonzero"/>
+                            </Path.Data>
+                        </Path>
+                </Button>
+
                 <TextBlock TextWrapping="Wrap"
                                Margin="10"
                                FontFamily="Arial"
