@@ -24,9 +24,11 @@
                     Click="BtnInfo_Click"
                     Width="50"/>
             <TextBox x:Name="HeaderInfo"
-                     Width="200"/>
+                     Width="200"
+                     Text="Bananarama"/>
             <TextBox x:Name="MessageInfo"
-                     Width="200"/>
+                     Width="200"
+                     Text="Bananarama Bananarama Bananarama Bananarama"/>
         </StackPanel>
         <Label Grid.Row="2" 
                Content="Warning:"/>

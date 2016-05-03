@@ -10,7 +10,6 @@ namespace TestApplication
     public partial class MainWindow : Window
     {
         private IPanel _panel;
-        private int _counter;
 
         public MainWindow()
         {
@@ -20,6 +19,8 @@ namespace TestApplication
             _panel.Activate();
             _panel.SetStartupLocation(Left,Top);
             _panel.MaxNotifications = 5;
+            _panel.MaxWidth = 150;
+            _panel.MinWidth = 150;
         }
 
         private void BtnInfo_Click(object sender, RoutedEventArgs e)

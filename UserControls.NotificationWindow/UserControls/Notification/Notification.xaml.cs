@@ -62,7 +62,6 @@ namespace UserControls.NotificationPanel
             //not working currently
             //todo remove the header grid row if the header is empty
             notificationWindow.HeaderRow.Height = string.IsNullOrEmpty(content) ? new GridLength(0, GridUnitType.Star) : new GridLength(1, GridUnitType.Star);
-
         }
 
         /// <summary>

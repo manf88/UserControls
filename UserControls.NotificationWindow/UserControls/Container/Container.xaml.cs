@@ -7,7 +7,7 @@ namespace UserControls.NotificationPanel
     /// <summary>
     /// The host window for notification items.
     /// </summary>
-    public partial class Container : Window
+    public partial class Container : BaseContainer
     {
         public Container()
         {
@@ -30,7 +30,7 @@ namespace UserControls.NotificationPanel
 
             NotificationList.Visibility = Visibility.Visible;
 
-            if(NotificationList.Children.Count == MaxNotifications)
+            if (NotificationList.Children.Count == MaxNotifications)
             {
                 RemoveNotification((Notification)NotificationList.Children[0]);
             }

@@ -17,6 +17,32 @@
             }
         }
 
+        public double MaxWidth
+        {
+            get
+            {
+                return _container.MaxNotificationWidth;
+            }
+
+            set
+            {
+                _container.MaxNotificationWidth = value;
+            }
+        }
+
+        public double MinWidth
+        {
+            get
+            {
+                return _container.MinWidth;
+            }
+
+            set
+            {
+                _container.MinWidth = value;
+            }
+        }
+
         public void Activate()
         {
             _container = new Container();
