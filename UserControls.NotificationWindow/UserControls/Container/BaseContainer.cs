@@ -29,8 +29,6 @@ namespace UserControls.NotificationPanel
             if (container == null)
                 return;
 
-            //not working currently
-            //todo remove the header grid row if the header is empty
             container.NotificationList.MaxWidth = width;
         }
 
@@ -56,10 +54,9 @@ namespace UserControls.NotificationPanel
             if (container == null)
                 return;
 
-            //not working currently
-            //todo remove the header grid row if the header is empty
             container.NotificationList.MinWidth = width;
         }
+
         #endregion
     }
 }
