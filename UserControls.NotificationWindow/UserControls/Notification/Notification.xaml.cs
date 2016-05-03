@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace UserControls.NotificationPanel
 {
     /// <summary>
     /// A Notification item that will be displayed in a notification container.
     /// </summary>
-    internal partial class Notification : UserControl
+    public partial class Notification : UserControl
     { 
         public Notification(string header, string message)
         {
@@ -76,6 +77,19 @@ namespace UserControls.NotificationPanel
         // Using a DependencyProperty as the backing store for Message.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MessageProperty =
             DependencyProperty.Register("Message", typeof(string), typeof(Notification), new PropertyMetadata(""));
+
+        /// <summary>
+        /// Message of the notification item.
+        /// </summary>
+        public Brush Color
+        {
+            get { return (Brush)GetValue(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Message.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ColorProperty =
+            DependencyProperty.Register("Color", typeof(Brush), typeof(Notification), new PropertyMetadata(Brushes.Transparent));
 
         /// <summary>
         /// Removes the notification item from its parent.

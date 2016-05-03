@@ -3,12 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestApplication"
-        xmlns:notify="clr-namespace:UserControls.NotificationPanel;assembly=UserControls.NotificationWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        LocationChanged="MainWindow_OnDragOver">
     <Grid>
-        <Button x:Name="Opener" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Content="Info:"/>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
+            <Button x:Name="BtnInfo" 
+                    Click="BtnInfo_Click"
+                    Width="50"/>
+            <TextBox x:Name="HeaderInfo"
+                     Width="200"/>
+            <TextBox x:Name="MessageInfo"
+                     Width="200"/>
+        </StackPanel>
+        <Label Grid.Row="2" 
+               Content="Warning:"/>
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal">
+            <Button x:Name="BtnWarning" 
+                    Click="BtnWarning_Click"
+                    Width="50"/>
+            <TextBox x:Name="HeaderWarning"
+                     Width="200"/>
+            <TextBox x:Name="MessageWarning"
+                     Width="200"/>
+        </StackPanel>
+        <Label Grid.Row="4" 
+               Content="Error:"/>
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal">
+            <Button x:Name="BtnError" 
+                    Click="BtnError_Click"
+                    Width="50"/>
+            <TextBox x:Name="HeaderError"
+                     Width="200"/>
+            <TextBox x:Name="MessageError"
+                     Width="200"/>
+        </StackPanel>
     </Grid>
 </Window>

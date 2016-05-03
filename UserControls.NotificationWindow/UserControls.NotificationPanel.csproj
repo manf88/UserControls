@@ -7,8 +7,8 @@
     <ProjectGuid>{DFF470EC-62D6-4BDA-9BB0-E0D40A3472F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UserControls.NotificationWindow</RootNamespace>
-    <AssemblyName>UserControls.NotificationWindow</AssemblyName>
+    <RootNamespace>UserControls.NotificationPanel</RootNamespace>
+    <AssemblyName>UserControls.NotificationPanel</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,16 +36,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IPanel.cs" />
+    <Compile Include="Contracts\NotificationType.cs" />
     <Compile Include="Implementation\Panel.cs" />
     <Compile Include="UserControls\Container\Container.xaml.cs">
       <DependentUpon>Container.xaml</DependentUpon>

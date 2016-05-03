@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 
 namespace UserControls.NotificationPanel
 {
     /// <summary>
     /// The host window for notification items.
     /// </summary>
-    internal partial class Container : Window
+    public partial class Container : Window
     {
         public Container()
         {
@@ -20,8 +21,10 @@ namespace UserControls.NotificationPanel
         /// <summary>
         /// Adds a notification to the container.
         /// </summary>
-        /// <param name="notification"></param>
-        public void AddNotification(string header, string message)
+        /// <param name="notificationType">The notification type</param>
+        /// <param name="header">The header text of the notification</param>
+        /// <param name="message">The message text of the notification</param>
+        public void AddNotification(NotificationType notificationType, string header, string message)
         {
             var notification = new Notification(header, message);
 
@@ -32,6 +35,21 @@ namespace UserControls.NotificationPanel
                 RemoveNotification((Notification)NotificationList.Children[0]);
             }
 
+            switch (notificationType)
+            {
+                case NotificationType.Info:
+                    notification.Color = Brushes.CadetBlue;
+                    break;
+                case NotificationType.Warning:
+                    notification.Color = Brushes.Yellow;
+                    break;
+                case NotificationType.Error:
+                    notification.Color = Brushes.OrangeRed;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("notificationType");
+            }
+
             NotificationList.Children.Add(notification);
             notification.Completed += OnNotificationCompleted;
         }
@@ -40,6 +58,13 @@ namespace UserControls.NotificationPanel
         {
             NotificationList.Children.Remove(notification);
             notification.RaiseCompleted(new DisposeNotificationEventArgs(notification));
+        }
+
+        internal void SetStartupLocation(double left, double top)
+        {
+            WindowStartupLocation = WindowStartupLocation.Manual;
+            Left = left;
+            Top = top;
         }
 
         private void OnNotificationCompleted(object sender, EventArgs e)

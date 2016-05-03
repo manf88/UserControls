@@ -1,22 +1,19 @@
-﻿using System;
-
-namespace UserControls.NotificationPanel
+﻿namespace UserControls.NotificationPanel
 {
     public class Panel : IPanel
     {
         private Container _container;
 
-        private int _maxNotifications;
         public int MaxNotifications
         {
             get
             {
-                return _maxNotifications;
+                return _container.MaxNotifications;
             }
 
             set
             {
-                _maxNotifications = value;
+                _container.MaxNotifications = value;
             }
         }
 
@@ -26,14 +23,20 @@ namespace UserControls.NotificationPanel
             _container.Show();
         }
 
-        public void AddNotification(string header, string message)
-        {
-            _container.AddNotification(header, message);
-        }
-
         public void Deactivate()
         {
             _container.Close();
         }
+
+        public void AddNotification(NotificationType notificationType, string header, string message)
+        {
+            _container.AddNotification(notificationType, header, message);
+        }
+
+        public void SetStartupLocation(double left, double right)
+        {
+            _container.SetStartupLocation(left, right);
+        }
+
     }
 }
