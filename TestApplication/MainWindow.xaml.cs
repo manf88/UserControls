@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 using UserControls.NotificationPanel;
 
 namespace TestApplication
@@ -19,8 +20,11 @@ namespace TestApplication
             _panel.Activate();
             _panel.SetStartupLocation(Left,Top);
             _panel.MaxNotifications = 5;
-            _panel.MaxWidth = 150;
+            _panel.MaxWidth = 300;
             _panel.MinWidth = 150;
+            //_panel.InformationColor = Brushes.Green;
+            //_panel.WarningColor = Brushes.Green;
+            _panel.ErrorColor = Brushes.Magenta;
         }
 
         private void BtnInfo_Click(object sender, RoutedEventArgs e)

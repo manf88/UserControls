@@ -1,4 +1,7 @@
-﻿namespace UserControls.NotificationPanel
+﻿using System;
+using System.Windows.Media;
+
+namespace UserControls.NotificationPanel
 {
     public class Panel : IPanel
     {
@@ -40,6 +43,45 @@
             set
             {
                 _container.MinWidth = value;
+            }
+        }
+
+        public Brush InformationColor
+        {
+            get
+            {
+                return _container.InformationColor;
+            }
+
+            set
+            {
+                _container.InformationColor = value;
+            }
+        }
+
+        public Brush WarningColor
+        {
+            get
+            {
+                return _container.WarningColor;
+            }
+
+            set
+            {
+                _container.WarningColor = value;
+            }
+        }
+
+        public Brush ErrorColor
+        {
+            get
+            {
+                return _container.ErrorColor;
+            }
+
+            set
+            {
+                _container.ErrorColor = value;
             }
         }
 

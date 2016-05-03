@@ -1,4 +1,6 @@
-﻿namespace UserControls.NotificationPanel
+﻿using System.Windows.Media;
+
+namespace UserControls.NotificationPanel
 {
     public interface IPanel
     {
@@ -16,6 +18,21 @@
         /// Sets/Gets the minimum width of the notifications.
         /// </summary>
         double MinWidth { get; set; }
+
+        /// <summary>
+        /// Sets/Gets the color of information notifications.
+        /// </summary>
+        Brush InformationColor { get; set; }
+
+        /// <summary>
+        /// Sets/Gets the color of warning notifications.
+        /// </summary>
+        Brush WarningColor { get; set; }
+
+        /// <summary>
+        /// Sets/Gets the color of error notifications.
+        /// </summary>
+        Brush ErrorColor { get; set; }
 
         /// <summary>
         /// Displays a notification in the panel.

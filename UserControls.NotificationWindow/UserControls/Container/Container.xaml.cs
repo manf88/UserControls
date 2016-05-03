@@ -38,13 +38,13 @@ namespace UserControls.NotificationPanel
             switch (notificationType)
             {
                 case NotificationType.Info:
-                    notification.Color = Brushes.CadetBlue;
+                    notification.Color = _informationColor;
                     break;
                 case NotificationType.Warning:
-                    notification.Color = Brushes.Yellow;
+                    notification.Color = _warningColor;
                     break;
                 case NotificationType.Error:
-                    notification.Color = Brushes.OrangeRed;
+                    notification.Color = _errorColor;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("notificationType");
