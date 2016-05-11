@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IPanel.cs" />
     <Compile Include="Contracts\NotificationType.cs" />
+    <Compile Include="Contracts\StartupLocation.cs" />
     <Compile Include="Implementation\Panel.cs" />
     <Compile Include="UserControls\Container\BaseContainer.cs" />
     <Compile Include="UserControls\Container\Container.xaml.cs">

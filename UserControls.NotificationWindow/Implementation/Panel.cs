@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Media;
 
 namespace UserControls.NotificationPanel
@@ -85,6 +86,36 @@ namespace UserControls.NotificationPanel
             }
         }
 
+        private Window _parent;
+        public Window Parent
+        {
+            get
+            {
+                return _parent;
+            }
+            set
+            {
+                _parent = value;
+
+                _parent.LocationChanged -= OnLocationChanged;
+                _parent.LocationChanged += OnLocationChanged;
+            }
+        }
+
+        private StartupLocation _startupLocation;
+        public StartupLocation StartupLocation
+        {
+            get
+            {
+                return _startupLocation;
+            }
+
+            set
+            {
+                _startupLocation = value;
+            }
+        }
+
         public void Activate()
         {
             _container = new Container();
@@ -101,10 +132,23 @@ namespace UserControls.NotificationPanel
             _container.AddNotification(notificationType, header, message);
         }
 
-        public void SetStartupLocation(double left, double right)
+        private void OnLocationChanged(object sender, EventArgs e)
         {
-            _container.SetStartupLocation(left, right);
-        }
+            var window = sender as Window;
+            if (window == null)
+                return;
 
+            switch (_startupLocation)
+            {
+                case StartupLocation.TopLeft:
+                    _container.SetStartupLocation(window.Left, window.Top);
+                    break;
+
+                case StartupLocation.TopRight:
+                    _container.SetStartupLocation(window.Left + window.Width - _container.MaxNotificationWidth, window.Top);
+                    break;
+            }
+
+        }
     }
 }

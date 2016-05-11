@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Media;
 
 namespace UserControls.NotificationPanel
 {
@@ -35,6 +36,16 @@ namespace UserControls.NotificationPanel
         Brush ErrorColor { get; set; }
 
         /// <summary>
+        /// The Parent of the current Panel.
+        /// </summary>
+        Window Parent { get; set; }
+
+        /// <summary>
+        /// Sets the Startup location of the notification container.
+        /// </summary>
+        StartupLocation StartupLocation { get; set; }
+
+        /// <summary>
         /// Displays a notification in the panel.
         /// </summary>
         /// <param name="notificationType">Type of the notification</param>
@@ -51,8 +62,5 @@ namespace UserControls.NotificationPanel
         /// Deaktivates the panel.
         /// </summary>
         void Deactivate();
-
-        //TODO: maybe set the position relative to the parent control.
-        void SetStartupLocation(double left, double right);
     }
 }

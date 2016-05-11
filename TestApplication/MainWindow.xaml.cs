@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using UserControls.NotificationPanel;
 
@@ -18,13 +17,15 @@ namespace TestApplication
 
             _panel = new Panel();
             _panel.Activate();
-            _panel.SetStartupLocation(Left,Top);
+            //_panel.SetStartupLocation(Left,Top);
             _panel.MaxNotifications = 5;
             _panel.MaxWidth = 300;
             _panel.MinWidth = 150;
             //_panel.InformationColor = Brushes.Green;
             //_panel.WarningColor = Brushes.Green;
             _panel.ErrorColor = Brushes.Magenta;
+            _panel.Parent = this;
+            _panel.StartupLocation = StartupLocation.TopRight;
         }
 
         private void BtnInfo_Click(object sender, RoutedEventArgs e)
@@ -45,11 +46,6 @@ namespace TestApplication
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _panel.Deactivate();
-        }
-
-        private void MainWindow_OnDragOver(object sender, EventArgs eventArgs)
-        {
-            _panel.SetStartupLocation(Left,Top);
         }
     }
 }
