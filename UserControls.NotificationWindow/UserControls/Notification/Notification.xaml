@@ -10,8 +10,9 @@
              MouseRightButtonDown="Close">
     <Grid RenderTransformOrigin="0,1">
         <Border     Background="{Binding Color, ElementName=NotificationWindow}"
-                    BorderBrush="Transparent"
-                    CornerRadius="5">
+                    BorderThickness="2"
+                    BorderBrush="LightGray"
+                    CornerRadius="1">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"

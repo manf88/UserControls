@@ -55,6 +55,8 @@ namespace UserControls.NotificationPanel
 
         public void RemoveNotification(Notification notification)
         {
+            notification.Completed -= OnNotificationCompleted;
+
             NotificationList.Children.Remove(notification);
             notification.RaiseCompleted(new DisposeNotificationEventArgs(notification));
         }

@@ -97,8 +97,14 @@ namespace UserControls.NotificationPanel
             {
                 _parent = value;
 
-                _parent.LocationChanged -= OnLocationChanged;
-                _parent.LocationChanged += OnLocationChanged;
+                _parent.LocationChanged -= SetPosition;
+                _parent.LocationChanged += SetPosition;
+
+                _parent.SizeChanged -= SetPosition;
+                _parent.SizeChanged += SetPosition;
+
+                _parent.StateChanged -= SetPosition;
+                _parent.StateChanged += SetPosition;
             }
         }
 
@@ -130,9 +136,10 @@ namespace UserControls.NotificationPanel
         public void AddNotification(NotificationType notificationType, string header, string message)
         {
             _container.AddNotification(notificationType, header, message);
+            SetPosition(Parent, null);
         }
 
-        private void OnLocationChanged(object sender, EventArgs e)
+        private void SetPosition(object sender, EventArgs e)
         {
             var window = sender as Window;
             if (window == null)
@@ -145,7 +152,7 @@ namespace UserControls.NotificationPanel
                     break;
 
                 case StartupLocation.TopRight:
-                    _container.SetStartupLocation(window.Left + window.Width - _container.MaxNotificationWidth, window.Top);
+                    _container.SetStartupLocation(window.Left + window.ActualWidth - _container.Width - 10, window.Top + 25);
                     break;
             }
 

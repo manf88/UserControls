@@ -23,7 +23,7 @@ namespace TestApplication
             _panel.MinWidth = 150;
             //_panel.InformationColor = Brushes.Green;
             //_panel.WarningColor = Brushes.Green;
-            _panel.ErrorColor = Brushes.Magenta;
+            //_panel.ErrorColor = Brushes.Magenta;
             _panel.Parent = this;
             _panel.StartupLocation = StartupLocation.TopRight;
         }
