@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IPanel.cs" />
+    <Compile Include="Contracts\NotificationMode.cs" />
     <Compile Include="Contracts\NotificationType.cs" />
     <Compile Include="Contracts\StartupLocation.cs" />
     <Compile Include="Implementation\Panel.cs" />

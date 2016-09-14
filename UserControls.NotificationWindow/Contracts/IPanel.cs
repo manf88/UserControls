@@ -46,6 +46,11 @@ namespace UserControls.NotificationPanel
         StartupLocation StartupLocation { get; set; }
 
         /// <summary>
+        /// Gets the current notification mode of the panel.
+        /// </summary>
+        NotificationMode NotificationMode { get; }
+
+        /// <summary>
         /// Displays a notification in the panel.
         /// </summary>
         /// <param name="notificationType">Type of the notification</param>

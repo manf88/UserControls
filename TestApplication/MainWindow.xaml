@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -14,6 +15,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" 
                Content="Info:"/>
@@ -53,5 +55,11 @@
             <TextBox x:Name="MessageError"
                      Width="200"/>
         </StackPanel>
+
+        <StackPanel Grid.Row="6" Background="AliceBlue">
+            <ComboBox ItemsSource="{Binding StartupLocations}"
+                      SelectedItem="{Binding CurrentStartupLocation}"/>
+        </StackPanel>
+        
     </Grid>
 </Window>
